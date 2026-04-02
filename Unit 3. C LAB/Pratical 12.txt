@@ -1,0 +1,25 @@
+// Enter a string and print it in lowercase letters. 
+#include <stdio.h>
+#include <ctype.h>
+
+int main(){
+
+    char str[50];
+
+    // Input
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    // Convert to lowercase
+    for(int i = 0; str[i] != '\0'; i++){
+        str[i] = tolower(str[i]);
+    }
+
+    // Output
+    printf("Lowercase string = %s\n", str);
+
+    return 0;
+}
+OUTPUT:
+Enter a string: HELLO
+Lowercase string = hello

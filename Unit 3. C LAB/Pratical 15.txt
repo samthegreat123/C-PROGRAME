@@ -1,0 +1,23 @@
+// Copy a string into another. 
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char str1[50], str2[50];
+
+    // Input
+    printf("Enter a string: ");
+    scanf("%s", str1);
+
+    // Copy string
+    strcpy(str2, str1);
+
+    // Output
+    printf("Copied string = %s\n", str2);
+
+    return 0;
+}
+OUTPUT:
+Enter a string: hello
+Copied string = hello

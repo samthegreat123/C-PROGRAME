@@ -1,0 +1,46 @@
+//Enter 5 strings and arrange them in ascending order. 
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+
+    char str[5][50], temp[50];
+
+    // Input strings
+    for(int i = 0; i < 5; i++){
+        printf("Enter string %d: ", i+1);
+        scanf("%s", str[i]);
+    }
+
+    // Sorting (ascending order)
+    for(int i = 0; i < 5; i++){
+        for(int j = i + 1; j < 5; j++){
+            if(strcmp(str[i], str[j]) > 0){
+                strcpy(temp, str[i]);
+                strcpy(str[i], str[j]);
+                strcpy(str[j], temp);
+            }
+        }
+    }
+
+    // Output sorted strings
+    printf("\nStrings in ascending order:\n");
+    for(int i = 0; i < 5; i++){
+        printf("%s\n", str[i]);
+    }
+
+    return 0;
+}
+OUTPUT:
+Enter string 1: mango
+Enter string 2: apple
+Enter string 3: banana
+Enter string 4: orange
+Enter string 5: grape
+
+Strings in ascending order:
+apple
+banana
+grape
+mango
+orange

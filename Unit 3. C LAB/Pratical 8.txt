@@ -1,0 +1,86 @@
+//Subtract two matrices using pointer to pointer. 
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+    int r, c;
+
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &r, &c);
+
+    // Pointer to pointer (2D dynamic array)
+    int **A, **B, **C;
+
+    // Allocate memory for rows
+    A = (int**)malloc(r * sizeof(int*));
+    B = (int**)malloc(r * sizeof(int*));
+    C = (int**)malloc(r * sizeof(int*));
+
+    // Allocate memory for columns
+    for(int i = 0; i < r; i++){
+        A[i] = (int*)malloc(c * sizeof(int));
+        B[i] = (int*)malloc(c * sizeof(int));
+        C[i] = (int*)malloc(c * sizeof(int));
+    }
+
+    // Input Matrix A
+    printf("\nEnter elements of Matrix A:\n");
+    for(int i = 0; i < r; i++){
+        for(int j = 0; j < c; j++){
+            scanf("%d", &A[i][j]);
+        }
+    }
+
+    // Input Matrix B
+    printf("\nEnter elements of Matrix B:\n");
+    for(int i = 0; i < r; i++){
+        for(int j = 0; j < c; j++){
+            scanf("%d", &B[i][j]);
+        }
+    }
+
+    // Subtraction
+    for(int i = 0; i < r; i++){
+        for(int j = 0; j < c; j++){
+            C[i][j] = A[i][j] - B[i][j];
+        }
+    }
+
+    // Output Result
+    printf("\nResult of subtraction:\n");
+    for(int i = 0; i < r; i++){
+        for(int j = 0; j < c; j++){
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+
+    // Free memory
+    for(int i = 0; i < r; i++){
+        free(A[i]);
+        free(B[i]);
+        free(C[i]);
+    }
+
+    free(A);
+    free(B);
+    free(C);
+
+    return 0;
+}
+OUPUT:
+Enter rows and columns: 2 2
+
+Enter elements of Matrix A:
+8 7
+6 5
+
+Enter elements of Matrix B:
+1 2
+3 4
+
+Result of subtraction:
+7 5
+3 1
