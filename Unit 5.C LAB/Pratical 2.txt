@@ -1,0 +1,51 @@
+//2. Write a program to enter N elements and search a value from the list 
+using binary search (without recursion). 
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, key;
+    int low = 0, high, mid, found = 0;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements in sorted order:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter value to search: ");
+    scanf("%d", &key);
+
+    high = n - 1;
+
+    // Binary Search (without recursion)
+    while (low <= high) {
+        mid = (low + high) / 2;
+
+        if (arr[mid] == key) {
+            found = 1;
+            break;
+        }
+        else if (key < arr[mid]) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+
+    if (found)
+        printf("Element found at position %d\n", mid + 1);
+    else
+        printf("Element not found\n");
+
+    return 0;
+}
+
+OUTPUT:
+Enter number of elements: 5
+Enter elements in sorted order:
+10 20 30 40 50
+Enter value to search: 40
+Element found at position 4

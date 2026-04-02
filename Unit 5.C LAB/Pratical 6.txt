@@ -1,0 +1,40 @@
+//6.
+Write a program to enter N elements and arrange the list in 
+ascending order using shell sort. 
+#include <stdio.h>
+
+int main() {
+    int arr[100], n, i, j, gap, temp;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    printf("Enter elements:\n");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Shell Sort
+    for (gap = n / 2; gap > 0; gap = gap / 2) {
+        for (i = gap; i < n; i++) {
+            temp = arr[i];
+
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) {
+                arr[j] = arr[j - gap];
+            }
+
+            arr[j] = temp;
+        }
+    }
+
+    // Display sorted array
+    printf("Sorted elements in ascending order:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+OUTPUT:
+Sorted elements in ascending order:
+3 5 7 8 9
