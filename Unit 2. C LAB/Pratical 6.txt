@@ -1,0 +1,93 @@
+//6. Write a function to print data of all students who joined in 2019. 
+
+#include <stdio.h>
+
+struct student{
+    char Name[20];
+    int age;
+    float grade;
+    int year;   // year of joining
+};
+
+// Function to print students who joined in 2019
+void print2019Students(struct student s[], int n){
+    printf("\nStudents who joined in 2019:\n");
+
+    for(int i=0; i<n; i++){
+        if(s[i].year == 2019){
+            printf("\nName : %s\n", s[i].Name);
+            printf("Age : %d\n", s[i].age);
+            printf("Grade : %.2f\n", s[i].grade);
+            printf("Year : %d\n", s[i].year);
+        }
+    }
+}
+
+int main(){
+
+    struct student s[5];
+
+    // Input
+    for(int i=0; i<5; i++){
+        printf("Enter Name of student %d: ", i+1);
+        scanf("%s", s[i].Name);
+
+        printf("Enter Age: ");
+        scanf("%d", &s[i].age);
+
+        printf("Enter Grade: ");
+        scanf("%f", &s[i].grade);
+
+        printf("Enter Year of Joining: ");
+        scanf("%d", &s[i].year);
+    }
+
+    // Function call
+    print2019Students(s, 5);
+
+    return 0;
+}
+
+OUTPUT:
+Enter Name of student 1: Albert
+Enter Age: 20
+Enter Grade: 6.5
+Enter Year of Joining: 2019
+
+Enter Name of student 2: David
+Enter Age: 21
+Enter Grade: 7.2
+Enter Year of Joining: 2020
+
+Enter Name of student 3: Mary
+Enter Age: 19
+Enter Grade: 8.0
+Enter Year of Joining: 2019
+
+Enter Name of student 4: John
+Enter Age: 22
+Enter Grade: 5.5
+Enter Year of Joining: 2018
+
+Enter Name of student 5: Grace
+Enter Age: 20
+Enter Grade: 9.1
+Enter Year of Joining: 2019
+
+
+Students who joined in 2019:
+
+Name : Albert
+Age : 20
+Grade : 6.50
+Year : 2019
+
+Name : Mary
+Age : 19
+Grade : 8.00
+Year : 2019
+
+Name : Grace
+Age : 20
+Grade : 9.10
+Year : 2019

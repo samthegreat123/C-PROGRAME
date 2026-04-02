@@ -1,0 +1,68 @@
+//5. Write a function to print names of students whose grade is greater 
+than 5.0
+#include <stdio.h>
+
+struct student{
+    char Name[20];
+    int age;
+    float grade;
+};
+
+// Function to print students with grade > 5.0
+void printTopStudents(struct student s[], int n){
+    printf("\nStudents with grade greater than 5.0:\n");
+
+    for(int i=0; i<n; i++){
+        if(s[i].grade > 5.0){
+            printf("%s\n", s[i].Name);
+        }
+    }
+}
+
+int main(){
+    
+    struct student s[5];
+
+    // Input
+    for(int i=0; i<5; i++){
+        printf("Enter the Name of student %d: ", i+1);
+        scanf("%s", s[i].Name);
+        
+        printf("Enter the Age of student %d: ", i+1);
+        scanf("%d", &s[i].age);
+        
+        printf("Enter the grade of student %d: ", i+1);
+        scanf("%f", &s[i].grade);
+    }
+
+    // Function call
+    printTopStudents(s, 5);
+
+    return 0;
+}
+OUTPUT:
+Enter the Name of student 1: Albert
+Enter the Age of student 1: 20
+Enter the grade of student 1: 4.5
+
+Enter the Name of student 2: David
+Enter the Age of student 2: 21
+Enter the grade of student 2: 6.2
+
+Enter the Name of student 3: Mary
+Enter the Age of student 3: 19
+Enter the grade of student 3: 7.0
+
+Enter the Name of student 4: John
+Enter the Age of student 4: 22
+Enter the grade of student 4: 3.8
+
+Enter the Name of student 5: Grace
+Enter the Age of student 5: 20
+Enter the grade of student 5: 8.1
+
+
+Students with grade greater than 5.0:
+David
+Mary
+Grace

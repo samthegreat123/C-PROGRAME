@@ -1,0 +1,55 @@
+//10. Write a program to demonstrate nested structure.
+
+#include <stdio.h>
+
+// Inner structure
+struct Address{
+    char city[20];
+    char country[20];
+};
+
+// Outer structure
+struct Student{
+    char name[20];
+    int age;
+    struct Address addr;   // nested structure
+};
+
+int main(){
+
+    struct Student s;
+
+    // Input
+    printf("Enter name: ");
+    scanf("%s", s.name);
+
+    printf("Enter age: ");
+    scanf("%d", &s.age);
+
+    printf("Enter city: ");
+    scanf("%s", s.addr.city);
+
+    printf("Enter country: ");
+    scanf("%s", s.addr.country);
+
+    // Output
+    printf("\n---Student Details---\n");
+    printf("Name: %s\n", s.name);
+    printf("Age: %d\n", s.age);
+    printf("City: %s\n", s.addr.city);
+    printf("Country: %s\n", s.addr.country);
+
+    return 0;
+}
+
+OUTPUT:
+Enter name: Albert
+Enter age: 20
+Enter city: London
+Enter country: UK
+
+---Student Details---
+Name: Albert
+Age: 20
+City: London
+Country: UK

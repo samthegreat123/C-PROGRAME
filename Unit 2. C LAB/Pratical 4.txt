@@ -1,0 +1,99 @@
+//4. Sort above data by score in descending order.
+
+#include <stdio.h>
+#include <string.h>
+
+struct student{
+    char Name[20];
+    int age;
+    float grade;
+};
+
+int main(){
+    
+    struct student s[5], temp;
+
+    // Input
+    for(int i=0; i<5; i++){
+        printf("Enter the Name of student %d: ", i+1);
+        scanf("%s", s[i].Name);
+        
+        printf("Enter the Age of student %d: ", i+1);
+        scanf("%d", &s[i].age);
+        
+        printf("Enter the grade of student %d: ", i+1);
+        scanf("%f", &s[i].grade);
+    }
+
+    // Sorting by grade (descending)
+    for(int i=0; i<5; i++){
+        for(int j=i+1; j<5; j++){
+            if(s[i].grade < s[j].grade){
+                temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+
+    // Output
+    printf("\n---STUDENT RECORDS (SORTED BY SCORE DESCENDING)----\n");
+
+    for(int i=0; i<5; i++){
+        printf("\nStudent %d\n", i+1);
+        printf("Name : %s\n", s[i].Name);
+        printf("Age : %d\n", s[i].age);
+        printf("Grade : %.2f\n", s[i].grade);
+    }
+
+    return 0;
+}
+
+OUTPUT:
+Enter the Name of student 1: Albert
+Enter the Age of student 1: 20
+Enter the grade of student 1: 89.5
+
+Enter the Name of student 2: David
+Enter the Age of student 2: 21
+Enter the grade of student 2: 92.4
+
+Enter the Name of student 3: Mary
+Enter the Age of student 3: 19
+Enter the grade of student 3: 85.0
+
+Enter the Name of student 4: John
+Enter the Age of student 4: 22
+Enter the grade of student 4: 88.3
+
+Enter the Name of student 5: Grace
+Enter the Age of student 5: 20
+Enter the grade of student 5: 91.2
+
+
+---STUDENT RECORDS (SORTED BY SCORE DESCENDING)----
+
+Student 1
+Name : David
+Age : 21
+Grade : 92.40
+
+Student 2
+Name : Grace
+Age : 20
+Grade : 91.20
+
+Student 3
+Name : Albert
+Age : 20
+Grade : 89.50
+
+Student 4
+Name : John
+Age : 22
+Grade : 88.30
+
+Student 5
+Name : Mary
+Age : 19
+Grade : 85.00

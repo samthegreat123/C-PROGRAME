@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main(){
+    struct{
+        int Rollno;
+        char Name[20];
+        char Department[20];
+        int Year_of_Joining;
+        float score;
+    } s;
+
+    printf("Enter Roll Number : ");
+    scanf("%d", &s.Rollno);
+
+    printf("Enter Name : ");
+    scanf("%s", s.Name);
+
+    printf("Enter Department : ");
+    scanf("%s", s.Department);
+
+    printf("Enter Year of Joining : ");
+    scanf("%d", &s.Year_of_Joining);
+
+    printf("Enter score : ");
+    scanf("%f", &s.score);
+
+    printf("\n-------STUDENT DATA--------\n");
+    printf("Roll Number     : %d\n", s.Rollno);
+    printf("Name            : %s\n", s.Name);
+    printf("Department      : %s\n", s.Department);
+    printf("Year of Joining : %d\n", s.Year_of_Joining);
+    printf("Score           : %.2f\n", s.score);
+
+    return 0;
+}
+
+OUTPUT:
+Enter Roll Number : 7113
+Enter Name : John Brown
+Enter Department : BCA
+Enter Year of Joining : 2025
+Enter score : 84.9
+
+-------STUDENT DATA--------
+Roll Number     : 7113
+Name            : JOhn
+Department      : BCA
+Year of Joining : 2025
+Score           : 84.90

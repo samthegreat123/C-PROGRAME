@@ -1,0 +1,62 @@
+//Differences between Structure & Union..
+#include <stdio.h>
+#include <string.h>
+
+struct student{
+    int id;
+    float marks;
+    char grade;
+};
+
+union data{
+    int id;
+    float marks;
+    char grade;
+};
+
+int main(){
+
+    struct student s;
+    union data u;
+
+    // Assign values to structure
+    s.id = 1;
+    s.marks = 85.5;
+    s.grade = 'A';
+
+    // Assign values to union
+    u.id = 1;
+    u.marks = 85.5;
+    u.grade = 'A';
+
+    printf("----Structure Values----\n");
+    printf("ID: %d\n", s.id);
+    printf("Marks: %.2f\n", s.marks);
+    printf("Grade: %c\n", s.grade);
+
+    printf("\n----Union Values----\n");
+    printf("ID: %d\n", u.id);
+    printf("Marks: %.2f\n", u.marks);
+    printf("Grade: %c\n", u.grade);
+
+    // Size comparison
+    printf("\nSize of structure: %lu bytes\n", sizeof(s));
+    printf("Size of union: %lu bytes\n", sizeof(u));
+
+    return 0;
+}
+
+OUPUT:
+
+----Structure Values----
+ID: 1
+Marks: 85.50
+Grade: A
+
+----Union Values----
+ID: 65
+Marks: 0.00
+Grade: A
+
+Size of structure: 12 bytes
+Size of union: 4 bytes
