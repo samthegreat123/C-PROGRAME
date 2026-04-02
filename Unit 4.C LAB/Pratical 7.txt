@@ -1,0 +1,84 @@
+//7. Wap to add records in file as per following structure. (empcode, 
+empname , salary)then read the content and find out employee who 
+earns highest salary. 
+
+#include <stdio.h>
+
+struct emp {
+    int code;
+    char name[50];
+    float salary;
+};
+
+int main() {
+    FILE *fp;
+    struct emp e, max;
+    int n, i;
+
+    // Step 1: Write records into file
+    fp = fopen("employee.txt", "w");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Enter number of employees: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter Emp Code: ");
+        scanf("%d", &e.code);
+
+        printf("Enter Emp Name: ");
+        scanf("%s", e.name);
+
+        printf("Enter Salary: ");
+        scanf("%f", &e.salary);
+
+        fprintf(fp, "%d %s %.2f\n", e.code, e.name, e.salary);
+    }
+
+    fclose(fp);
+
+    // Step 2: Read file and find highest salary
+    fp = fopen("employee.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    // Read first record
+    fscanf(fp, "%d %s %f", &max.code, max.name, &max.salary);
+
+    // Compare with remaining records
+    while (fscanf(fp, "%d %s %f", &e.code, e.name, &e.salary) != EOF) {
+        if (e.salary > max.salary) {
+            max = e;
+        }
+    }
+
+    fclose(fp);
+
+    // Step 3: Display highest salary employee
+    printf("\nEmployee with Highest Salary:\n");
+    printf("Code: %d\nName: %s\nSalary: %.2f\n", max.code, max.name, max.salary);
+
+    return 0;
+}
+
+OUTPUT:
+Enter number of employees: 3
+
+Enter Emp Code: 101
+Enter Emp Name: Amit
+Enter Salary: 25000
+
+Enter Emp Code: 102
+Enter Emp Name: Rahul
+Enter Salary: 30000
+
+Enter Emp Code: 103
+Enter Emp Name: Neha
+Enter Salary: 28000 

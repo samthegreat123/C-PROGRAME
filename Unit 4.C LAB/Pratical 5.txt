@@ -1,0 +1,49 @@
+//5. Wap to write string in “greencity.txt” and print it in reverse order 
+in file “cleancity.txt” 
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    FILE *fp1, *fp2;
+    char str[100], rev[100];
+    int i, j;
+
+    // Step 1: Write into greencity.txt
+    fp1 = fopen("greencity.txt", "w");
+
+    if (fp1 == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Enter a string: ");
+    gets(str);
+
+    fprintf(fp1, "%s", str);
+    fclose(fp1);
+
+    // Step 2: Reverse the string
+    j = 0;
+    for (i = strlen(str) - 1; i >= 0; i--) {
+        rev[j++] = str[i];
+    }
+    rev[j] = '\0';
+
+    // Step 3: Write reversed string into cleancity.txt
+    fp2 = fopen("cleancity.txt", "w");
+
+    if (fp2 == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    fprintf(fp2, "%s", rev);
+    fclose(fp2);
+
+    printf("Reversed content written to cleancity.txt\n");
+
+    return 0;
+}
+
+OUTPUT:
+Enter a string: Green City Program

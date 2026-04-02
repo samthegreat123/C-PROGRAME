@@ -1,0 +1,54 @@
+6. Wap to write a file DATA.Txt which has 1 to 10 numbers and then 
+read this file. If number is odd then store it in “ODD.txt” and if it is 
+even store it in “EVEN.txt” 
+
+#include <stdio.h>
+
+int main() {
+    FILE *fp, *fodd, *feven;
+    int num, i;
+
+    // Step 1: Write numbers 1 to 10 into DATA.txt
+    fp = fopen("DATA.txt", "w");
+
+    if (fp == NULL) {
+        printf("Error opening DATA.txt\n");
+        return 1;
+    }
+
+    for (i = 1; i <= 10; i++) {
+        fprintf(fp, "%d ", i);
+    }
+
+    fclose(fp);
+
+    // Step 2: Open files for reading and writing
+    fp = fopen("DATA.txt", "r");
+    fodd = fopen("ODD.txt", "w");
+    feven = fopen("EVEN.txt", "w");
+
+    if (fp == NULL || fodd == NULL || feven == NULL) {
+        printf("Error opening files!\n");
+        return 1;
+    }
+
+    // Step 3: Read and separate odd/even numbers
+    while (fscanf(fp, "%d", &num) != EOF) {
+        if (num % 2 == 0)
+            fprintf(feven, "%d ", num);
+        else
+            fprintf(fodd, "%d ", num);
+    }
+
+    // Close all files
+    fclose(fp);
+    fclose(fodd);
+    fclose(feven);
+
+    printf("Numbers separated into ODD.txt and EVEN.txt successfully!\n");
+
+    return 0;
+}
+
+OUTPUT:
+Numbers separated into ODD.txt and EVEN.txt successfully!

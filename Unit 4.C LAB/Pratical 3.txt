@@ -1,0 +1,37 @@
+//3. Wap to copy one file int another file. 
+#include <stdio.h>
+
+int main() {
+    FILE *fp1, *fp2;
+    char ch;
+
+    // Open source file
+    fp1 = fopen("source.txt", "r");
+    if (fp1 == NULL) {
+        printf("Error opening source file!\n");
+        return 1;
+    }
+
+    // Open destination file
+    fp2 = fopen("destination.txt", "w");
+    if (fp2 == NULL) {
+        printf("Error opening destination file!\n");
+        fclose(fp1);
+        return 1;
+    }
+
+    // Copy contents
+    while ((ch = fgetc(fp1)) != EOF) {
+        fputc(ch, fp2);
+    }
+
+    printf("File copied successfully!\n");
+
+    // Close files
+    fclose(fp1);
+    fclose(fp2);
+
+    return 0;
+}
+OUTPUT:
+Hello, this is a file copy program.

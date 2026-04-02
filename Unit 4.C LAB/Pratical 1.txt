@@ -1,0 +1,44 @@
+//1. Wap to write content in file and then read that file and print the 
+content on screen... for my lab work.. so give the out and the output..
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char data[100];
+
+    // Writing to file
+    fp = fopen("sample.txt", "w");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Enter text to write in file: ");
+    gets(data);  // for simplicity (note: unsafe in real use)
+
+    fprintf(fp, "%s", data);
+    fclose(fp);
+
+    // Reading from file
+    fp = fopen("sample.txt", "r");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("\nContent of file:\n");
+
+    while (fgets(data, sizeof(data), fp) != NULL) {
+        printf("%s", data);
+    }
+
+    fclose(fp);
+
+    return 0;
+}
+OUTPUT:Enter text to write in file: Hello, this is my lab program
+
+Content of file:
+Hello, this is my lab program
+
+

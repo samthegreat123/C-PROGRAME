@@ -1,0 +1,39 @@
+//2. Wap to read a file and count no. of characters,blank spaces, tabs and 
+lines in file 
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char ch;
+    int characters = 0, spaces = 0, tabs = 0, lines = 0;
+
+    fp = fopen("sample.txt", "r");
+
+    if (fp == NULL) {
+        printf("File not found!\n");
+        return 1;
+    }
+
+    while ((ch = fgetc(fp)) != EOF) {
+        characters++;
+
+        if (ch == ' ')
+            spaces++;
+        else if (ch == '\t')
+            tabs++;
+        else if (ch == '\n')
+            lines++;
+    }
+
+    fclose(fp);
+
+    printf("Characters = %d\n", characters);
+    printf("Spaces = %d\n", spaces);
+    printf("Tabs = %d\n", tabs);
+    printf("Lines = %d\n", lines);
+
+    return 0;
+}
+OUTPUT:
+Hello World
+This is a test file

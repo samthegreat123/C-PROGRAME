@@ -1,0 +1,25 @@
+//13. Wap to print no. of arguments and list of strings given in command 
+line. 
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+    int i;
+
+    // Print number of arguments
+    printf("Number of arguments = %d\n", argc);
+
+    // Print all arguments
+    printf("Arguments are:\n");
+    for (i = 0; i < argc; i++) {
+        printf("%s\n", argv[i]);
+    }
+
+    return 0;
+}
+OUTPUT:
+Number of arguments = 4
+Arguments are:
+program
+hello
+world
+123

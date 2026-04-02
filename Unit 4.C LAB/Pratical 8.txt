@@ -1,0 +1,72 @@
+//8. Wap to add records in binary file as per following structure. 
+(empcode, empname, salary) and read the content and print on 
+screen...
+
+#include <stdio.h>
+
+struct emp {
+    int code;
+    char name[50];
+    float salary;
+};
+
+int main() {
+    FILE *fp;
+    struct emp e;
+    int n, i;
+
+    // Step 1: Write records into binary file
+    fp = fopen("employee.dat", "wb");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Enter number of employees: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter Emp Code: ");
+        scanf("%d", &e.code);
+
+        printf("Enter Emp Name: ");
+        scanf("%s", e.name);
+
+        printf("Enter Salary: ");
+        scanf("%f", &e.salary);
+
+        fwrite(&e, sizeof(e), 1, fp);
+    }
+
+    fclose(fp);
+
+    // Step 2: Read from binary file
+    fp = fopen("employee.dat", "rb");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("\nEmployee Records:\n");
+
+    while (fread(&e, sizeof(e), 1, fp) == 1) {
+        printf("Code: %d\tName: %s\tSalary: %.2f\n", e.code, e.name, e.salary);
+    }
+
+    fclose(fp);
+
+    return 0;
+}
+
+OUTPUT:
+Enter number of employees: 2
+
+Enter Emp Code: 101
+Enter Emp Name: Amit
+Enter Salary: 25000
+
+Enter Emp Code: 102
+Enter Emp Name: Neha
+Enter Salary: 30000
